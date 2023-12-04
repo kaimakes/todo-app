@@ -2,7 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+interface AppProps {
+
+}
+
+const App: React.FC<AppProps> = () => {
   const todos = [
     { taskUID: '1', priority: 'High', status: 'InProgress', description: 'Complete the todo app', completed: false },
     { taskUID: '2', priority: 'Medium', status: 'Completed', description: 'Another task or something', completed: true },
@@ -10,6 +14,8 @@ function App() {
   ];
 
   // find a way to go from todos that contains JSON elements -> an array that contains JSX elements
+
+  // switch - case
 
   // anonymous function
   const todoElements = todos.map(function (todo) {
