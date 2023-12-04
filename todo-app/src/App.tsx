@@ -6,7 +6,7 @@ interface AppProps {
 
 }
 
-const App: React.FC<AppProps> = () => {
+const App: React.FC<AppProps> = (props) => {
   const todos = [
     { taskUID: '1', priority: 'High', status: 'InProgress', description: 'Complete the todo app', completed: false },
     { taskUID: '2', priority: 'Medium', status: 'Completed', description: 'Another task or something', completed: true },
