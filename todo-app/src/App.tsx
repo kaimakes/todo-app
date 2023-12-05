@@ -6,6 +6,7 @@ interface AppProps {
 
 }
 
+// Parent component 
 const App: React.FC<AppProps> = (props) => {
   const todos = [
     { taskUID: '1', priority: 'High', status: 'InProgress', description: 'Complete the todo app', completed: false },
@@ -16,6 +17,22 @@ const App: React.FC<AppProps> = (props) => {
   // find a way to go from todos that contains JSON elements -> an array that contains JSX elements
 
   // switch - case
+
+
+function getTodoStatus(status: string) string {
+  switch (todo.status) {
+    case 'InProgress',: 
+      return <p>InProgress</p>;'
+    case 'Completed':
+      return <p>Completed</p>;
+    case 'Normal':
+      return <p>Normal</p>;
+    default:
+      return <p>Unknown</p>
+
+  }
+}
+
 
   // anonymous function
   const todoElements = todos.map(function (todo) {
