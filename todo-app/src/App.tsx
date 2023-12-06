@@ -26,6 +26,7 @@ const App: React.FC<AppProps> = (props) => {
   // switch - case
 
 // Switch case. If it looks up the right value, it should display the right element. Then, I need to add the CSS property.
+// This function maps todo statuses to JSX elements. 
   function getTodoStatus(status: string): JSX.Element {
     switch (status) {
       case 'InProgress':
@@ -42,7 +43,7 @@ const App: React.FC<AppProps> = (props) => {
 
   // arrow function
   const todoElementsMap = todos.map(todo => {
-    // Map the JSON todo to a JSX element.
+    // Map the JSON todo to a JSX element. This is a div with a key
     // Assign a key to this element, could be UID?
     return (
     <div key={todo.taskUID}>
