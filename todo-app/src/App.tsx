@@ -1,12 +1,19 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+// import Todo from 'Todo.tsx';
 
+
+// Create an interface to define what each value should be 
 interface AppProps {
-
+  taskUID: string;
+  priority: string;
+  status: string;
+  description: string;
+  completed: boolean;
 }
 
-// Parent component 
+// Todo JSON
 const App: React.FC<AppProps> = (props) => {
   const todos = [
     { taskUID: '1', priority: 'High', status: 'InProgress', description: 'Complete the todo app', completed: false },
@@ -14,40 +21,31 @@ const App: React.FC<AppProps> = (props) => {
     { taskUID: '3', priority: 'Low', status: 'Normal', description: 'A third task or something', completed: false },
   ];
 
-  // find a way to go from todos that contains JSON elements -> an array that contains JSX elements
+  // Task: find a way to go from todos that contains JSON elements -> an array that contains JSX elements
 
   // switch - case
 
-
-function getTodoStatus(status: string) string {
-  switch (todo.status) {
-    case 'InProgress',: 
-      return <p>InProgress</p>;'
-    case 'Completed':
-      return <p>Completed</p>;
-    case 'Normal':
-      return <p>Normal</p>;
-    default:
-      return <p>Unknown</p>
-
+// Switch case. If it looks up the right value, it should display the right element. Then, I need to add the CSS property.
+  function getTodoStatus(status: string): JSX.Element {
+    switch (status) {
+      case 'InProgress':
+        return <p>InProgress</p>;
+      case 'Completed':
+        return <p>Completed</p>;
+      case 'Normal':
+        return <p>Normal</p>;
+      default:
+        return <p>Unknown</p>;
+    }
   }
-}
-
-
-  // anonymous function
-  const todoElements = todos.map(function (todo) {
-    return (<div>
-      <h3>{todo.description}</h3>
-      <p>Priority: {todo.priority}</p>
-      <p>Status: {todo.status}</p>
-      <p>Completed</p>
-    </div>);
-  });
+  
 
   // arrow function
   const todoElementsMap = todos.map(todo => {
-    // map the JSON todo to a JSX element
-    return (<div>
+    // Map the JSON todo to a JSX element.
+    // Assign a key to this element, could be UID?
+    return (
+    <div key={todo.taskUID}>
       <h3>{todo.description}</h3>
       <p>Priority: {todo.priority}</p>
       <p>Status: {todo.status}</p>
