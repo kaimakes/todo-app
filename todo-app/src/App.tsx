@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {Todo} from './Todos';
+import { Todo, TodoButton } from './Todos';
 import { CompletionInfoFlags } from 'typescript';
 
 // Create an interface to define what each value should be 
@@ -11,6 +11,8 @@ interface AppProps {
   status: string;
   description: string;
   completed: boolean;
+  checked: boolean;
+  count?: number;
 }
 
 // Todo JSON
@@ -21,12 +23,13 @@ const App: React.FC = () => {
     { taskUID: '3', priority: 'Low', status: 'Normal', description: 'A third task or something', completed: false },
   ];
 
+
   // Task: find a way to go from todos that contains JSON elements -> an array that contains JSX elements
 
   // switch - case
 
-// Switch case. If it looks up the right value, it should display the right element. Then, I need to add the CSS property.
-// This function maps todo statuses to JSX elements. 
+  // Switch case. If it looks up the right value, it should display the right element. Then, I need to add the CSS property.
+  // This function maps todo statuses to JSX elements. 
   function getTodoStatus(status: string): JSX.Element {
     switch (status) {
       case 'InProgress':
@@ -39,25 +42,34 @@ const App: React.FC = () => {
         return <p>Unknown</p>;
     }
   }
-  
 
+  // We need to use UseState and change the state of an item by clicking the checkbox.
 
   // arrow function
   const todoElementsMap = todos.map(todo => {
     // Map the JSON todo to a JSX element. This is a div with a key
-    // Assign a key to this element, could be UID?
-    return (
-    <Todo 
-    taskuid = {todo.taskUID}
-    priority = {todo.priority}
-    status = {todo.status}
-    description = {todo.description}
-    completed = {todo.completed} 
-    />
-  )});
+   return <div key={todo.taskUID}>
+    {/* Assign a key to this element, could be UID? */}
+    <>
+      <Todo
+        taskuid={todo.taskUID}
+        priority={todo.priority}
+        status={todo.status}
+        description={todo.description}
+        completed={todo.completed}
+      />
+
+        {/* <TodoButton
+          completed={todo.completed}
+          checked={checked}
+          onChange={() => handleCheckboxChange(todo.taskUID)}
+        /> */}
+    </>
+  </div>
+  });
 
   // Boolean for checking when to make todo.completed green
- // const RedOrGreen = todos.completed ? 'completed' : 'incomplete';
+  // const RedOrGreen = todos.completed ? 'completed' : 'incomplete';
 
   // each component in React needs a root/parent element
   return (<div>
