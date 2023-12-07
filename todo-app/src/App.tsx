@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-// import Todo from 'Todo.tsx';
-
+import {Todo} from './Todos';
+import { CompletionInfoFlags } from 'typescript';
 
 // Create an interface to define what each value should be 
 interface AppProps {
@@ -14,7 +14,7 @@ interface AppProps {
 }
 
 // Todo JSON
-const App: React.FC<AppProps> = (props) => {
+const App: React.FC = () => {
   const todos = [
     { taskUID: '1', priority: 'High', status: 'InProgress', description: 'Complete the todo app', completed: false },
     { taskUID: '2', priority: 'Medium', status: 'Completed', description: 'Another task or something', completed: true },
@@ -41,18 +41,23 @@ const App: React.FC<AppProps> = (props) => {
   }
   
 
+
   // arrow function
   const todoElementsMap = todos.map(todo => {
     // Map the JSON todo to a JSX element. This is a div with a key
     // Assign a key to this element, could be UID?
     return (
-    <div key={todo.taskUID}>
-      <h3>{todo.description}</h3>
-      <p>Priority: {todo.priority}</p>
-      <p>Status: {todo.status}</p>
-      <p>Completed</p>
-    </div>);
-  });
+    <Todo 
+    taskuid = {todo.taskUID}
+    priority = {todo.priority}
+    status = {todo.status}
+    description = {todo.description}
+    completed = {todo.completed} 
+    />
+  )});
+
+  // Boolean for checking when to make todo.completed green
+ // const RedOrGreen = todos.completed ? 'completed' : 'incomplete';
 
   // each component in React needs a root/parent element
   return (<div>
