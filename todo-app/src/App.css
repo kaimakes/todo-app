@@ -5,3 +5,8 @@
 .incomplete {
     color: red;
 }
+
+.isSelected {
+    color:yellow;
+    font-style: italic;
+}
